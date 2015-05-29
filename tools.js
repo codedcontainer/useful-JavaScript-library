@@ -18,7 +18,7 @@ var aString = {
     hostname: window.location.host,
     urlName: window.location + '',
     icon : ' >> ',
-    breadString: aString.createString(this.hostname, 'Home') + ' >> ',
+    breadString: aString.createString('/', 'Home') + ' >> ',
     parameters: '#main-content', //can change depending on which page you are on.
     pageTitle: '',
     h3Title : '', 
@@ -61,7 +61,7 @@ var aString = {
         this.removeLast();
         this.newtitle(); 
         this.breadString = this.breadString + aString.createString(this.urlName, this.newtitle().toLowerCase() );
-        return this.breadString;
+        return "<div class='crumNav'>"+this.breadString+"</div>";
 
     }
   };
