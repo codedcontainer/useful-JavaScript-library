@@ -1,3 +1,18 @@
+/* ========================================== */
+/* Common JavaScript Objects for Common Tasks */
+/* 1. A Href String Generator                 */
+/* 2. BreadCrumb Creator                      */
+/* 3. Simple HTML AJAX                        */
+/* ========================================== */
+
+/* ========================================== */
+/* 1. A Href String Generator                 */
+/*      EXECUTION :                           */
+/*      aString.createString(location, text)  */
+/*      PROPERTIES:                           */
+/*      aString.location = location           */  
+/*      aString.text = inside text            */
+/* ========================================== */
 var aString = {
     location: '',
     text: '', 
@@ -13,6 +28,16 @@ var aString = {
         return string;
     }
   };
+
+/* ================================================ */
+/* 2. BreadCrumb Creator                            */
+/* Creates a breadcrumb string based on the current */
+/* URL structure and the current4 pages h2 or h3    */
+/* This will exclude the first directory path,      */
+/* in this case ".com/page". Page would be ignored  */ 
+/*      EXECUTION :                                 */
+/*      breadCrumb.printString()                    */   
+//* =============================================== */
 
   var breadcrumb = {
     hostname: window.location.host,
@@ -48,7 +73,7 @@ var aString = {
         }
         return this.pageTitle;
     },
-     urlArray : function()
+    urlArray: function()
     {
         this.urlArray = this.urlName.split('/');
         this.urlArray = this.urlArray.splice(4);
@@ -65,3 +90,34 @@ var aString = {
 
     }
   };
+/* ========================================================= */
+/* 3. Simple HTML AJAX                                       */
+/* Clicking on a link will replace the content               */
+/* from that link into the specified div container           */
+/* The page getting data needs to be simplified!             */
+/*      EXECUTION:                                           */
+/*      simpleAjax.replaceContent(domPath, replaceContainer) */
+/*      domPath = clickable link to get data                 */
+/*      replaceContainer = place to replace this new data    */   
+/* ========================================================= */
+var simpleAjax = {
+    domPath : '',
+    replaceContainer : '',
+    replaceContent: function(domPath, replaceContainer){
+         // make the link return false
+        $(domPath).click(function(e){
+            var currentLink = $(this).attr('href');
+            
+            $.ajax({
+                url: currentLink,
+                dataType: 'html',
+                success: function(data){
+                    $(replaceContainer).empty().append(data);
+                }
+            });
+
+           e.preventDefault();
+            return false;
+        });
+    }
+};
