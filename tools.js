@@ -107,7 +107,7 @@ var simpleAjax = {
          // make the link return false
         $(domPath).click(function(e){
             var currentLink = $(this).attr('href');
-            
+
             $.ajax({
                 url: currentLink,
                 dataType: 'html',
@@ -115,7 +115,6 @@ var simpleAjax = {
                     $(replaceContainer).empty().append(data);
                 }
             });
-
            e.preventDefault();
             return false;
         });
