@@ -3,6 +3,7 @@
 /* 1. A Href String Generator                 */
 /* 2. BreadCrumb Creator                      */
 /* 3. Simple HTML AJAX                        */
+/* 4. Radio Button Value To DOM               */
 /* ========================================== */
 
 /* ========================================== */
@@ -120,3 +121,36 @@ var simpleAjax = {
         });
     }
 };
+/* ========================================================= */
+/* 4. Radio Button Value To DOM                              */
+/* Gets the value of a radio button on click and then uses   */   
+/* that value inside of a string. This empties a dom element */
+/* and replaces it with the new string.                      */
+/*    EXECUTION:                                             */
+/*    radioVal.printPop(name, domContent)                    */
+/*    name = name of the radio button group                  */   
+/*    domContent = tag to get emptied and replaced           */
+/*        with string.                                       */
+/* ========================================================= */
+ var radioVal = {
+        value: '',
+        content: '',
+        html: '',
+        printPop: function(name, domContent)
+        {
+            $("input:radio[name="+name+"]").click(function(){
+                this.value = $(this).val();
+                
+                //get the contents of the modal body and remove them.
+                this.content = $(domContent);
+                this.content.empty();
+                //replace the contents with the following content
+
+                this.html = "Thank you for submitting your ";
+                this.html = this.html + this.value + " grievance."; 
+                this.html = this.html + " Please verify that the grievance has been received by the intended recipient.";
+                console.log(this.html);
+                this.content.append(this.html);
+            });
+        }
+    }
