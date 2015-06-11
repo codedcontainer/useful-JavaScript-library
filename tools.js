@@ -4,6 +4,7 @@
 /* 2. BreadCrumb Creator                      */
 /* 3. Simple HTML AJAX                        */
 /* 4. Radio Button Value To DOM               */
+/* 5. Radio Button On Change                  */
 /* ========================================== */
 
 /* ========================================== */
@@ -154,3 +155,23 @@ var simpleAjax = {
             });
         }
     }
+/* ========================================================= */
+/* 5. Radio Button On Change                                 */
+/* Gets the value of a radio button group whenever there     */   
+/* is a click inside of the main document.                   */
+/* and replaces it with the new string.                      */
+/*    EXECUTION:                                             */
+/*      The function needs to be called inside               */
+/*       of a click handler!                                 */
+/*      radioChange.check(fieldset);                         */
+/*       fieldset = fieldset or other DOM container          */ 
+/* ========================================================= */
+var radioChange = {
+    check: function(fieldsetId) {
+             if ( $(fieldsetId+" input[type='radio']").is(':checked') )
+                {
+                    isChecked = $(fieldsetId + " input[type='radio']").filter(':checked').val(); 
+                    return isChecked;
+                }          
+        }
+};
