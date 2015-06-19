@@ -5,6 +5,7 @@
 /* 3. Simple HTML AJAX                        */
 /* 4. Radio Button Value To DOM               */
 /* 5. Radio Button On Change                  */
+/* 6. Grab and Serialize Form Data            */
 /* ========================================== */
 
 /* ========================================== */
@@ -175,3 +176,47 @@ var radioChange = {
                 }          
         }
 };
+/* ========================================================= */
+/* 6. Grab and Serialize Form Data                           */
+/* Gets the value of all webform data for computations       */
+/* also comes with the return of serialized data for ajax.   */
+/*    EXECUTION:                                             */
+/*    The function needs to be called from inside            */       
+/*    of a click handler.                                    */
+/*    Don't forget to return false on click.                 */   
+/*    forms.submitDefault() -> Serializes all data for ajax  */
+/*    forms.getVal(name)                                     */   
+/*        name = actuall name of form item                   */
+/* ========================================================= */
+var forms = {
+        allData:'',
+        newArray: [],
+        arrayFun: [],
+        ohYea: '',
+        //inject the id of first for every select option
+        htmlInject : function () {
+            $('select option').eq(0).attr('id', 'first');
+        },
+        submitDefault: function() {
+            forms.newArray = [];
+              this.allData = $('form').serialize();  
+             var splitString = this.allData.split('&');
+             $.each(splitString, function(index, value){
+                 var splitArray = value.split('=');
+                 forms.newArray.push(splitArray);       
+             });            
+        },
+        getVal: function(name)
+        {
+            $.each(this.newArray, function(index,value){
+                var foundIt = $.inArray(name, value);
+                if (foundIt != -1)
+                {
+                   forms.ohYea = forms.newArray[index][1];
+                   var strReplace = forms.ohYea.replace(/\+/g, ' '); 
+                   forms.ohYea = strReplace;                   
+                } 
+            });
+             return forms.ohYea;         
+        }
+    };   
