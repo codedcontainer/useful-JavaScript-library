@@ -185,8 +185,9 @@ var radioChange = {
 /*    of a click handler.                                    */
 /*    Don't forget to return false on click.                 */   
 /*    forms.submitDefault() -> Serializes all data for ajax  */
-/*    forms.getVal(name)                                     */   
-/*        name = actuall name of form item                   */
+/*    forms.getVal(name) -> gets value for simple maths etc  */   
+/*        name = actuall name of form item   		     */
+/*	  console.log(forms.newArray) -> prints form data    */
 /* ========================================================= */
 var forms = {
         allData:'',
