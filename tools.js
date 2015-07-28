@@ -6,6 +6,7 @@
 /* 4. Radio Button Value To DOM               */
 /* 5. Radio Button On Change                  */
 /* 6. Grab and Serialize Form Data            */
+/* 7. Ajax Send w/ Modal Popup                */
 /* ========================================== */
 
 /* ========================================== */
@@ -185,9 +186,9 @@ var radioChange = {
 /*    of a click handler.                                    */
 /*    Don't forget to return false on click.                 */   
 /*    forms.submitDefault() -> Serializes all data for ajax  */
-/*    forms.getVal(name) -> gets value for simple maths etc  */   
-/*        name = actuall name of form item   		     */
-/*	  console.log(forms.newArray) -> prints form data    */
+/*    forms.getVal(name)                                     */  
+/*    forms.allData -> all serialzied data in var            */ 
+/*        name = actual name of form item                    */
 /* ========================================================= */
 var forms = {
         allData:'',
@@ -220,4 +221,47 @@ var forms = {
             });
              return forms.ohYea;         
         }
-    };   
+    };
+/* ========================================================= */
+/* 7. Ajax Send w/ Modal Popup                               */
+/* Uses the serialized data to send info to another page     */
+/* Also comes with Bootstrap Modal.                          */
+/*    EXECUTION:                                             */
+/*      Fill out the following properties (url, data).       */
+/*      Other properties are optional.                       */
+/*      Make sure to append modal if using Bootstrap         */ 
+/*    EXAMPLE:                                               */
+/*      $('#submitBtn').on('click',function(e){              */
+/*      e.preventDefault();                                  */
+/*      forms.submitDefault();                               */
+/*      $(this).attr('disabled','disabled');                 */
+/*      ajax.url = '/sendMail.asp';                          */
+/*      ajax.data = forms.allData;                           */
+/*      ajax.send();                                         */
+/*      }).after(ajax.modal);                                */
+/* ========================================================= */
+var ajax = {
+    url: '',
+    async: 'false',
+    data: '',
+    method: 'post',
+    modal: '<div id="myModal" class="modal fade" style="top: 100px;"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><button type="button" class="close" data-dismiss="modal">&times;</button>Your Form Was Succesfully Sent</div><div class="modal-footer"><button type="button" class="btn btn-primary">Close</button></div></div></div></div>', 
+    /* append a Bootstrap modal to the form submit button */
+
+    send:function(){
+        $('.modal .modal-footer button, button.close').click(function(){
+            $('.modal').css({'opacity':0, 'display': 'none'});
+        });
+
+        $.ajax({
+            url: ajax.url,
+            data: ajax.data, 
+            async: ajax.async,
+            method: ajax.method,
+            success: function(e){
+                $('#myModal').css({'opacity': 1, 'display':'inline'});
+            }
+        });
+    }
+
+};
