@@ -247,7 +247,7 @@ var ajax = {
     method: 'post',
     modal: '<div id="myModal" class="modal fade" style="top: 100px;"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><button type="button" class="close" data-dismiss="modal">&times;</button>Your Form Was Succesfully Sent</div><div class="modal-footer"><button type="button" class="btn btn-primary">Close</button></div></div></div></div>', 
     /* append a Bootstrap modal to the form submit button */
-
+    modalError: '<div id="myModalError" class="modal fade" style="top: 100px;"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><button type="button" class="close" data-dismiss="modal">&times;</button>Your Form Was Not Succesfully Sent. Please refresh the page and try again.</div><div class="modal-footer"><button type="button" class="btn btn-primary">Close</button></div></div></div></div>', 
     send:function(){
         $('.modal .modal-footer button, button.close').click(function(){
             $('.modal').css({'opacity':0, 'display': 'none'});
@@ -260,8 +260,13 @@ var ajax = {
             method: ajax.method,
             success: function(e){
                 $('#myModal').css({'opacity': 1, 'display':'inline'});
+            },
+            error: function()
+            {
+                $('#myModalError').css({'opacity': 1, 'display':'inline'});
             }
         });
     }
 
 };
+
