@@ -51,12 +51,13 @@ var aString = {
     parameters: '#main-content', //can change depending on which page you are on.
     pageTitle: '',
     h3Title : '', 
+    findPageUrl: '', 
+    parentTitle: '',
     urlArray: [],
     parPrint: function()
     {
         this.pageTitle = $(this.parameters+' h2').first().text();
         this.h3Title = $(this.parameters+' h3').first().text();
-
         return this.pageTitle;
         return this.h3Title; 
     },
@@ -66,7 +67,8 @@ var aString = {
         {
             this.breadString = this.breadString + this.urlArray[i].toUpperCase() + this.icon; 
         }
-        this.breadString = this.breadString + this.urlArray[i] + this.icon;
+        var sampleArray = this.urlArray[i]; 
+        this.breadString = this.breadString + this.parentTitle + this.icon;
     },
     //get main title which is a h2 if there is not a main title that ia h3
     newtitle: function()
@@ -83,15 +85,33 @@ var aString = {
         this.urlArray = this.urlArray.splice(4);
         return this.urlArray;   
     },
+    findPage: function(findPageUrl)
+    { 
+        var pageUrl = '';
+        var last = this.urlArray.length; 
+        last = this.urlArray[last-1];
+        //return last;
+        $('nav ul li a').each(function(index,value)
+        {
+            var newUrl =  $(this).attr('href');
+           newUrl =  newUrl.indexOf(last); 
+            if(newUrl != -1)
+            {
+                breadcrumb.parentTitle = $(this).parent().parent().parent().find('a').eq(0).text();
+                breadcrumb.pageUrl = $(this).html();   
+            }
+        });
+    },
     printString: function()
     {
         this.parPrint();
         this.urlArray();
+        this.findPage(); 
         this.removeLast();
         this.newtitle(); 
-        this.breadString = this.breadString + aString.createString(this.urlName, this.newtitle().toLowerCase() );
+        this.findPage(); 
+        this.breadString = this.breadString + aString.createString(this.urlName, this.pageUrl);
         return "<div class='crumNav'>"+this.breadString+"</div>";
-
     }
   };
 /* ========================================================= */
@@ -196,17 +216,19 @@ var forms = {
         arrayFun: [],
         ohYea: '',
         //inject the id of first for every select option
-        htmlInject : function () {
+        htmlInject : function ()
+        {
             $('select option').eq(0).attr('id', 'first');
         },
         submitDefault: function() {
             forms.newArray = [];
-              this.allData = $('form').serialize();  
-             var splitString = this.allData.split('&');
-             $.each(splitString, function(index, value){
+            this.allData = $('form').serialize();  
+            var splitString = this.allData.split('&');
+            $.each(splitString, function(index, value)
+            {
                  var splitArray = value.split('=');
                  forms.newArray.push(splitArray);       
-             });            
+            });            
         },
         getVal: function(name)
         {
@@ -267,6 +289,4 @@ var ajax = {
             }
         });
     }
-
 };
-
