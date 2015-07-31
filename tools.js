@@ -208,7 +208,9 @@ var radioChange = {
 /*    forms.submitDefault() -> Serializes all data for ajax  */
 /*    forms.getVal(name)                                     */  
 /*    forms.allData -> all serialzied data in var            */ 
-/*        name = actual name of form item                    */
+/*        name = actual name of form item                    */ 
+/*    forms.loadCache -> Added pre-exsisting data on form    */
+/*    and needs to be called independatly from click hander  */
 /* ========================================================= */
 var forms = {
         allData:'',
@@ -224,11 +226,12 @@ var forms = {
             forms.newArray = [];
             this.allData = $('form').serialize();  
             var splitString = this.allData.split('&');
-            $.each(splitString, function(index, value)
+            $.each(splitString, function(index, value) 
             {
                  var splitArray = value.split('=');
                  forms.newArray.push(splitArray);       
-            });            
+            }); 
+            this.cacheSerialize(this.newArray);           
         },
         getVal: function(name)
         {
@@ -242,6 +245,34 @@ var forms = {
                 } 
             });
              return forms.ohYea;         
+        },
+        cacheSerialize: function(data)
+        {
+            $.each(data, function(index,value){
+                document.cookie= value[0] + '=' + value[1]; 
+            });
+        },
+        loadCache: function()
+        {
+            var cookies = document.cookie;
+            cookies = cookies.split(';'); 
+            $.each(cookies, function(indexa, cookieString){
+                var formNames = $('form [name]');
+                $.each(formNames, function(index,value){ 
+                var formName = $(this).attr('name'); 
+                var inValue = cookieString.search(formName) 
+                if(inValue != -1) 
+                  {
+                    var cookieSplit = [];
+                    cookieSplit.push(cookieString.split('='));
+                    cookieSplit[0][1] = cookieSplit[0][1].replace(/%40/g,'@');
+                    cookieSplit[0][1] = cookieSplit[0][1].replace(/\+/g, ' ');
+                    cookieSplit[0][1] = cookieSplit[0][1].replace(/%2C/g,',');
+                    cookieSplit[0][1] = cookieSplit[0][1].replace(/%2B/g,'+');
+                    $('[name='+formName+']').val(cookieSplit[0][1]);
+                  }
+                });
+            });
         }
     };
 /* ========================================================= */
