@@ -209,7 +209,7 @@ var radioChange = {
 /*    forms.getVal(name)                                     */  
 /*    forms.allData -> all serialzied data in var            */ 
 /*        name = actual name of form item                    */ 
-/*    forms.loadCache -> Added pre-exsisting data on form    */
+/*    forms.init(true) -> Adds autocomplete and session save */
 /*    and needs to be called independatly from click hander  */
 /* ========================================================= */
 var forms = {
@@ -218,6 +218,17 @@ var forms = {
         arrayFun: [],
         ohYea: '',
         //inject the id of first for every select option
+        init: function(complete){
+            if(complete == true)
+            {
+                this.autocomplete();
+                this.loadCache();
+            }
+        },
+        autocomplete: function()
+        {
+            $('form [name]').attr('autocomplete','true');
+        },
         htmlInject : function ()
         {
             $('select option').eq(0).attr('id', 'first');
