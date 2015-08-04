@@ -348,9 +348,8 @@ var listOrder = {
         var innerA = [];
         var innerB = [];
         var innerC = [];
-        var list = $('ul#'+id+' li a', 'ol#'+id+' li a'); 
+        var list = $('ul#'+id+' li a'); 
         $.each( list, function(index, value){
-            console.log(value);
             innerA.push(value.innerHTML); 
             innerB.push(value);  
         });
@@ -363,9 +362,9 @@ var listOrder = {
                 }
             }); 
         });
-        $('ul#'+id, 'ol#'+id).empty(); 
+        $('ul#'+id).empty(); 
         $.each(innerC, function(indexC, valueC){
-            $('ul#'+id, 'ol#'+id).append('<li>'+valueC+'</li>');
+            $('ul#'+id).append('<li>'+valueC+'</li>');
         });
     }
 }
