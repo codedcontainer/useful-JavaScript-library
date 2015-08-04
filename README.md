@@ -9,3 +9,4 @@ I have been trying to keep everything written in plain JavaScript to allow flexi
 5. Radio Button On Change
 6. Grab and Serialize Form Data
 7. Ajax Send w/ Modal Popup
+8. Reorder A list with links
