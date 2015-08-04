@@ -332,3 +332,39 @@ var ajax = {
         });
     }
 };
+/* ========================================================= */
+/* 8. Reorder A list with links                              */
+/* Great for sitemap links or other lists. The js helper     */
+/* should not be loaded every time as this will take times   */
+/*    EXECUTION:                                             */
+/*      The result should be copied and                      */ 
+/*       pasted back into the page.                          */
+/*       listOrder(reorder(id))                              */  
+/* ========================================================= */
+var listOrder = {
+    reorder: function(id)
+    {
+        var innerA = [];
+        var innerB = [];
+        var innerC = [];
+        var list = $('ul#'+id+' li a', 'ol#'+id+' li a'); 
+        $.each( list, function(index, value){
+            console.log(value);
+            innerA.push(value.innerHTML); 
+            innerB.push(value);  
+        });
+            innerA.sort(); 
+        $.each(innerA, function(indexa, valuea){
+            $.each(innerB,function(indexb, valueb){
+                if( valueb.innerHTML == valuea )
+                {
+                 innerC.push("<a href='"+valueb+"'>"+valuea + "</a>");    
+                }
+            }); 
+        });
+        $('ul#'+id, 'ol#'+id).empty(); 
+        $.each(innerC, function(indexC, valueC){
+            $('ul#'+id, 'ol#'+id).append('<li>'+valueC+'</li>');
+        });
+    }
+}
