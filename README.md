@@ -12,10 +12,10 @@ I have been trying to keep everything written in plain JavaScript to allow flexi
 8. Reorder A list with links
 
 ===
-Node Web Scraper <br/>
+<b>Node Web Scraper</b> <br/>
 The tools also includes a app.js file which incorporates Node.js and several modules to web scrape a website. The scrapper creates a start and end tag on each of the pages for each find and replace with use of any IDE of your choosing. This tools also scrapes files of various types such as .js and .css when it comes in contact with them. In addition, the scrapper grabs images and saves them to a seperate directory. If a div container is selected then these "extra" files will remain empty. Unless you need support for this you will need to incorporate conditions based on file types.<br/>
-Steps for Execution: <br/>
-1. Download all dependancies for the application using npm
-2. Add a pages and images folder
+<b>Steps for Execution:</b> <br/>
+1. Download all dependancies for the application using npm <br/>
+2. Add a pages and images folder <br/>
 3. Update the variables in app.js for the website of your choosing and the main div for scrapping
 
