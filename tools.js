@@ -302,7 +302,7 @@ var forms = {
 /*      $(this).attr('disabled','disabled');                 */
 /*      ajax.url = '/sendMail.asp';                          */
 /*      ajax.data = forms.allData;                           */
-/*      ajax.send();                                         */
+/*      ajax.send(id);                                         */
 /*      }).after(ajax.modal);                                */
 /* ========================================================= */
 var ajax = {
@@ -313,22 +313,27 @@ var ajax = {
     modal: '<div id="myModal" class="modal fade" style="top: 100px;"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><button type="button" class="close" data-dismiss="modal">&times;</button>Your Form Was Succesfully Sent</div><div class="modal-footer"><button type="button" class="btn btn-primary">Close</button></div></div></div></div>', 
     /* append a Bootstrap modal to the form submit button */
     modalError: '<div id="myModalError" class="modal fade" style="top: 100px;"><div class="modal-dialog"><div class="modal-content"><div class="modal-body"><button type="button" class="close" data-dismiss="modal">&times;</button>Your Form Was Not Succesfully Sent. Please refresh the page and try again.</div><div class="modal-footer"><button type="button" class="btn btn-primary">Close</button></div></div></div></div>', 
-    send:function(){
+    send:function(id){
         $('.modal .modal-footer button, button.close').click(function(){
             $('.modal').css({'opacity':0, 'display': 'none'});
         });
-
+        console.log(id);
         $.ajax({
             url: ajax.url,
             data: ajax.data, 
             async: ajax.async,
             method: ajax.method,
             success: function(e){
+                var btnId = id.getAttribute('id');
+                console.log(btnId);
                 $('#myModal').css({'opacity': 1, 'display':'inline'});
+
+                $('#'+btnId).attr('disabled','disabled');
             },
             error: function()
             {
                 $('#myModalError').css({'opacity': 1, 'display':'inline'});
+                $('#'+btnId).removeAttr('disabled');
             }
         });
     }
