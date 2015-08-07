@@ -50,17 +50,34 @@ var aString = {
     icon : ' >> ',
     breadString: aString.createString('/', 'Home') + ' >> ',
     parameters: '#main-content', //can change depending on which page you are on.
-    pageTitle: '',
+    pageTitle: '', //dependant on h# tag
     h3Title : '', 
     findPageUrl: '', 
     parentTitle: '',
     urlArray: [],
+    pageUrl: '', 
+    singlePage: false,
     parPrint: function()
     {
         this.pageTitle = $(this.parameters+' h2').first().text();
         this.h3Title = $(this.parameters+' h3').first().text();
-        return this.pageTitle;
-        return this.h3Title; 
+    },
+     newtitle: function()
+    {
+        if ( this.pageTitle == '' )
+        {
+            this.pageTitle = this.h3Title;
+        }
+    },
+    createUrlArray: function()
+    {
+        this.urlArray = this.urlName.split('/');
+        this.urlArray = this.urlArray.splice(4);
+        //adds the file name and the page before in array. exludes a "pages directory"
+        if (this.urlArray.length < 2)
+        {
+            this.singlePage = true; 
+        }  
     },
     removeLast: function()
     {
@@ -69,23 +86,16 @@ var aString = {
             this.breadString = this.breadString + this.urlArray[i].toUpperCase() + this.icon; 
         }
         var sampleArray = this.urlArray[i]; 
-        this.breadString = this.breadString + this.parentTitle + this.icon;
-    },
-    //get main title which is a h2 if there is not a main title that ia h3
-    newtitle: function()
-    {
-        if ( this.pageTitle == '' )
+       
+        if ( this.singlePage == true)
         {
-            this.pageTitle = this.h3Title;
+            this.breadString = this.breadString; 
         }
-        return this.pageTitle;
+        else {
+             this.breadString = this.breadString + this.parentTitle + this.icon;
+        }
     },
-    urlArray: function()
-    {
-        this.urlArray = this.urlName.split('/');
-        this.urlArray = this.urlArray.splice(4);
-        return this.urlArray;   
-    },
+   
     findPage: function(findPageUrl)
     { 
         var pageUrl = '';
@@ -95,24 +105,39 @@ var aString = {
         $('nav ul li a').each(function(index,value)
         {
             var newUrl =  $(this).attr('href');
-           newUrl =  newUrl.indexOf(last); 
+            newUrl =  newUrl.indexOf(last); 
             if(newUrl != -1)
             {
                 breadcrumb.parentTitle = $(this).parent().parent().parent().find('a').eq(0).text();
-                breadcrumb.pageUrl = $(this).html();   
+                breadcrumb.pageUrl = $(this).html(); 
+                console.log( typeof(breadcrumb.pageUrl)) ;
+
+                if (breadcrumb.pageUrl == "")
+                {
+                    breadcrumb.pageUrl = breadcrumb.urlName.substring(breadcrumb.urlName.lastIndexOf('/')+1); 
+                    console.log(breadcrumb.pageUrl);
+                }
             }
         });
     },
     printString: function()
     {
         this.parPrint();
-        this.urlArray();
+        this.createUrlArray();
         this.findPage(); 
         this.removeLast();
         this.newtitle(); 
-        this.findPage(); 
-        this.breadString = this.breadString + aString.createString(this.urlName, this.pageUrl);
+        this.findPage();
+        if (this.singlePage == false)
+        {
+            this.breadString = this.breadString + aString.createString(this.urlName, this.pageUrl);
         return "<div class='crumNav'>"+this.breadString+"</div>";
+        }
+        else{
+            this.breadString = this.breadString + aString.createString(this.urlName, this.pageTitle); 
+            return "<div class='crumNav'>"+this.breadString+"</div>";
+        }
+        
     }
   };
 /* ========================================================= */
