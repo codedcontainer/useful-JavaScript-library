@@ -43,8 +43,7 @@ var aString = {
 /*      EXECUTION :                                 */
 /*      breadCrumb.printString()                    */   
 //* =============================================== */
-
-  var breadcrumb = {
+ var breadcrumb = {
     hostname: window.location.host,
     urlName: window.location + '',
     icon : ' >> ',
@@ -100,13 +99,13 @@ var aString = {
     { 
         var pageUrl = '';
         var last = this.urlArray.length; 
-        last = this.urlArray[last-1];
-        //return last;
+        last = this.urlArray[last-1]; //name of the document with extension 
         $('nav ul li a').each(function(index,value)
         {
-            var newUrl =  $(this).attr('href');
-            newUrl =  newUrl.indexOf(last); 
-            if(newUrl != -1)
+            var newUrl =  $(this).attr('href'); //gets all the href values of every nav link 
+            newUrl =  newUrl.indexOf(last); //see if document name is in the navigation system 
+            var parent = $(value).hasClass('dropdown-toggle' ); //do not use if there is a duplicate parent 
+            if(newUrl != -1 && parent == false ) // if the page is in the navigation system 
             {
                 breadcrumb.parentTitle = $(this).parent().parent().parent().find('a').eq(0).text();
                 breadcrumb.pageUrl = $(this).html(); 
