@@ -8,6 +8,7 @@
 /* 6. Grab and Serialize Form Data            */
 /* 7. Ajax Send w/ Modal Popup                */
 /* 8. Reorder A list with links               */
+/* 9. Dropdown Sub Menu Height                */
 /* ========================================== */
 
 /* ========================================== */
@@ -394,6 +395,58 @@ var listOrder = {
         $('ul#'+id).empty(); 
         $.each(innerC, function(indexC, valueC){
             $('ul#'+id).append('<li>'+valueC+'</li>');
+        });
+    }
+}
+/* ========================================================= */
+/* 9. Dropdown Sub Menu Height                               */
+/* Keeps the top height of the submenu even with the height  */
+/* of the listed item                                        */
+/* should not be loaded every time as this will take times   */
+/*    EXECUTION:                                             */
+/*        1.) The listed item needs to be declared.          */ 
+/*        2.) Declare all special listed items in HTML       */
+/*        These are the parents of each sub menu             */
+/*        3.) begin needs to be executed.                    */
+/*        liHeight = height of a menu item in nav            */ 
+/*        classNames = special list items declared           */
+/*        begin() = starts the magic                         */  
+/* ========================================================= */
+var dropdownObj = {
+    liHeight: 40, 
+    singleClass: '', 
+    classNames: [],
+    begin: function()
+    {
+        $('nav li').hover(function(){
+            var liClassName = $(this).attr('class');
+            dropdownObj.singleClass = liClassName; 
+            dropdownObj.hoverEach();     
+        }); 
+    }, 
+    hoverEach : function(){
+        $.each(this.classNames, function(index,value)
+        {
+            var removeDot = value.replace('.','');
+            var hello = dropdownObj.singleClass;
+            if (hello != '')
+            {
+                var stringContains =  hello.indexOf(removeDot); 
+            }
+            if(stringContains != -1)
+            {
+                dropdownObj.adjustHeight(value); 
+            }
+        });
+    },
+    adjustHeight: function(thisValue)
+    {
+        console.log(thisValue);
+         var dropdownSubmenu = $(thisValue);  
+            dropdownSubmenu.hover( function (){
+            var indexValue = dropdownSubmenu.index(this);
+             var indexHeight = indexValue * dropdownObj.liHeight; 
+            $(this).children().css('top', indexHeight);  
         });
     }
 }
