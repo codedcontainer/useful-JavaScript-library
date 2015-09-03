@@ -404,49 +404,20 @@ var listOrder = {
 /* of the listed item                                        */
 /* should not be loaded every time as this will take times   */
 /*    EXECUTION:                                             */
-/*        1.) The listed item needs to be declared.          */ 
-/*        2.) Declare all special listed items in HTML       */
-/*        These are the parents of each sub menu             */
-/*        3.) begin needs to be executed.                    */
-/*        liHeight = height of a menu item in nav            */ 
-/*        classNames = special list items declared           */
-/*        begin() = starts the magic                         */  
+/*        1.) Add what one li height value equals            */ 
+/*        2.) Make sure to add .firstSub to first li in ul   */
+/*        3.) Breadcrumb.begin() to start                    */  
 /* ========================================================= */
-var dropdownObj = {
-    liHeight: 40, 
-    singleClass: '', 
-    classNames: [],
-    begin: function()
-    {
-        $('nav li').hover(function(){
-            var liClassName = $(this).attr('class');
-            dropdownObj.singleClass = liClassName; 
-            dropdownObj.hoverEach();     
-        }); 
-    }, 
-    hoverEach : function(){
-        $.each(this.classNames, function(index,value)
-        {
-            var removeDot = value.replace('.','');
-            var hello = dropdownObj.singleClass;
-            if (hello != '')
+var dropdown = {
+    liHeight: 0,
+    begin: function(){
+        $('nav li.firstSub a').hover(function(){
+            var numbers = $(this).parent().index();
+            var childrenBool = $(this).parent().has('ul');
+            if (childrenBool != '')
             {
-                var stringContains =  hello.indexOf(removeDot); 
+                $(this).parent().find('ul').css('top', (numbers * dropdown.liHeight )) ; 
             }
-            if(stringContains != -1)
-            {
-                dropdownObj.adjustHeight(value); 
-            }
-        });
-    },
-    adjustHeight: function(thisValue)
-    {
-        console.log(thisValue);
-         var dropdownSubmenu = $(thisValue);  
-            dropdownSubmenu.hover( function (){
-            var indexValue = dropdownSubmenu.index(this);
-             var indexHeight = indexValue * dropdownObj.liHeight; 
-            $(this).children().css('top', indexHeight);  
-        });
+        })
     }
 }
