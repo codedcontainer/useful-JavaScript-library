@@ -13,7 +13,7 @@ I have been trying to keep everything written in plain JavaScript to allow flexi
 
 ===
 <b>ASP Send Mail</b><br/>
-Inside of the "ASP Email Submit" directory there is a folder that will send any of your forms to the selected email using ASP. This can also be utilized with #6 and #7 of the JavaScript Object tools by sending the serialized form data to this file.
+Inside of the "ASP Email Submit" directory there is a folder that will send any of your forms to the selected email using ASP. This can also be utilized with #6 and #7 of the JavaScript Object tools by sending the serialized form data to this file. <br/>
 <b>Steps for Execution:</b><br/>
 1. Change the name values inside of this file <br/>
 2. Add any additional CC's <br/>
