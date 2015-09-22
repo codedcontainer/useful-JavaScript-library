@@ -327,8 +327,8 @@ var forms = {
 /*      $(this).attr('disabled','disabled');                 */
 /*      ajax.url = '/sendMail.asp';                          */
 /*      ajax.data = forms.allData;                           */
-/*      ajax.send(id);                                         */
-/*      }).after(ajax.modal);                                */
+/*      ajax.send(this);                                     */
+/*      }).after(ajax.modal, ajax.modalError);               */
 /* ========================================================= */
 var ajax = {
     url: '',
