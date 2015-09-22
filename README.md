@@ -15,9 +15,9 @@ I have been trying to keep everything written in plain JavaScript to allow flexi
 <b>ASP Send Mail</b><br/>
 Inside of the "ASP Email Submit" directory there is a folder that will send any of your forms to the selected email using ASP. This can also be utilized with #6 and #7 of the JavaScript Object tools by sending the serialized form data to this file.
 <b>Steps for Execution:</b><br/>
-1. Change the name values inside of this file
-2. Add any additional CC's
-3. Return false the form submit button
+1. Change the name values inside of this file <br/>
+2. Add any additional CC's <br/>
+3. Return false the form submit button <br/>
 4. Send the serialzed data to the form using AJAX (#6 & #7)
 
 ===
