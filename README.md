@@ -10,6 +10,8 @@ I have been trying to keep everything written in plain JavaScript to allow flexi
 6. Grab and Serialize Form Data
 7. Ajax Send w/ Modal Popup
 8. Reorder A list with links
+9. Dropdown Sub Menu Height
+10. Equal Height of child divs
 
 ## Additional Tools
 <b>ASP Send Mail</b><br/>
