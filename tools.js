@@ -9,6 +9,7 @@
 /* 7. Ajax Send w/ Modal Popup                */
 /* 8. Reorder A list with links               */
 /* 9. Dropdown Sub Menu Height                */
+/* 10. Equal Height of child Divs             */
 /* ========================================== */
 
 /* ========================================== */
@@ -420,4 +421,33 @@ var dropdown = {
             }
         })
     }
+}
+/* ========================================================= */
+/* 10. Equal Height of children divs                         */
+/* Sometimes you cannot get equal heights with flexbox or    */
+/* with display table. This is especially true if you are    */ 
+/* using bootstrap columns or if you are not able to create  */
+/* new rows and have to create a clearfix class div.         */    
+/*    EXECUTION:                                             */
+/*     1.) Set your parent div heightBalance.containerName   */
+/*     2.) Set your child div heightBalance.childElements    */
+/*     3.) Execute heightBalance.cal()                       */  
+/* ========================================================= */
+var heightBalance = {
+    containerName:  '',
+    childElements: '', 
+    heightArray: [], 
+   calc: function(){
+       var divs = $(this.containerName + " " + this.childElements); 
+       $.each(divs, function(index, value){
+        var innHeight = $(value).height(); ; 
+        heightBalance.heightArray.push(innHeight); 
+       });  
+       this.largestHeight(this.heightArray); 
+   },
+   largestHeight: function(data)
+   {
+       var i = data.indexOf(Math.max.apply(Math, data));
+       $(heightBalance.childElements).height(this.heightArray[i] ); 
+   }
 }
