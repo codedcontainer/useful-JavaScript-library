@@ -10,6 +10,7 @@
 /* 8. Reorder A list with links               */
 /* 9. Dropdown Sub Menu Height                */
 /* 10. Equal Height of child Divs             */
+/* 11. IE Image Replace                       */
 /* ========================================== */
 
 /* ========================================== */
@@ -450,4 +451,27 @@ var heightBalance = {
        var i = data.indexOf(Math.max.apply(Math, data));
        $(heightBalance.childElements).height(this.heightArray[i] ); 
    }
+}
+/* ========================================================= */
+/* 10. IE Image Replace                                      */
+/* IE CSS filters no longer work from version 9 and above.   */ 
+/* You might have images that need to be inverted, these     */ 
+/* images can be substituted. Even if you don't have a svg   */
+/* invert issue this will still work for any other           */
+/* image in IE                                               */    
+/*    EXECUTION:                                             */
+/*     1.) Substitute image with image id                    */
+/* ========================================================= */
+var ieImage = {
+    changeImage: function(newImage, elementId)
+    {
+        var ua = window.navigator.userAgent;
+        var edge = ua.indexOf('Edge');
+        var msie = ua.indexOf('MSIE ');
+        
+        if (msie > 0 || edge > 0)
+        {
+            $(elementId).attr('src',newImage);
+        }
+    }
 }
