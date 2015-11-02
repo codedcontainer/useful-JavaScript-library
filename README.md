@@ -12,6 +12,7 @@ I have been trying to keep everything written in plain JavaScript to allow flexi
 8. Reorder A list with links
 9. Dropdown Sub Menu Height
 10. Equal Height of child divs
+11. IE Image Replace    
 
 ## Additional Tools
 <b>ASP Send Mail</b><br/>
