@@ -32,7 +32,7 @@ The tools also includes a app.js file which incorporates Node.js and several mod
 3. Update the variables in app.js for the website of your choosing and the main div for scrapping
 
 ===
-<b>Angular.js XML RSS Feed</b>
+<b>Angular.js XML RSS Feed</b> <br>
 Now you can grab an RSS feed and parse it's data using promises. This only goes through one RSS item. You will need to edit this code and add "angular.forEach" method for each xml node parent. <br>
 <b>Steps for Execution</b><br/>
 1. Make sure to install x2js script file <br>
