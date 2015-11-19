@@ -112,12 +112,9 @@ var aString = {
             {
                 breadcrumb.parentTitle = $(this).parent().parent().parent().find('a').eq(0).text();
                 breadcrumb.pageUrl = $(this).html(); 
-                console.log( typeof(breadcrumb.pageUrl)) ;
-
                 if (breadcrumb.pageUrl == "")
                 {
                     breadcrumb.pageUrl = breadcrumb.urlName.substring(breadcrumb.urlName.lastIndexOf('/')+1); 
-                    console.log(breadcrumb.pageUrl);
                 }
             }
         });
@@ -200,7 +197,6 @@ var simpleAjax = {
                 this.html = "Thank you for submitting your ";
                 this.html = this.html + this.value + " grievance."; 
                 this.html = this.html + " Please verify that the grievance has been received by the intended recipient.";
-                console.log(this.html);
                 this.content.append(this.html);
             });
         }
@@ -344,7 +340,6 @@ var ajax = {
         $('.modal .modal-footer button, button.close').click(function(){
             $('.modal').css({'opacity':0, 'display': 'none'});
         });
-        console.log(id);
         $.ajax({
             url: ajax.url,
             data: ajax.data, 
@@ -352,7 +347,6 @@ var ajax = {
             method: ajax.method,
             success: function(e){
                 var btnId = id.getAttribute('id');
-                console.log(btnId);
                 $('#myModal').css({'opacity': 1, 'display':'inline'});
 
                 $('#'+btnId).attr('disabled','disabled');
