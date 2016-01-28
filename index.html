@@ -1,59 +1,79 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>Useful Javascript Library by jdmagic21</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Useful Javascript Library</h1>
-        <p>Useful set of tools to automate the creating of things using JavaScript Objects </p>
+    <section class="page-header">
+      <h1 class="project-name">Useful Javascript Library</h1>
+      <h2 class="project-tagline">Useful set of tools to automate the creating of things using JavaScript Objects </h2>
+      <a href="https://github.com/jdmagic21/useful-JavaScript-library" class="btn">View on GitHub</a>
+      <a href="https://github.com/jdmagic21/useful-JavaScript-library/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/jdmagic21/useful-JavaScript-library/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <p class="view"><a href="https://github.com/jdmagic21/useful-JavaScript-library">View the Project on GitHub <small>jdmagic21/useful-JavaScript-library</small></a></p>
+    <section class="main-content">
+      <h1>
+<a id="1-a-href-string-generator-" class="anchor" href="#1-a-href-string-generator-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. A Href String Generator <br>
+</h1>
 
+<p>This simply creates a anchor link using Javascript. Just provide the http location and the text you want to provide. <br>
+<strong>Execution</strong> <br>
+<code>aString.createString(location, text)</code> <br>
+<strong>Properties</strong><br>
+<code>aString.location = location</code><br>
+<code>aString.text = inside text</code> <br></p>
 
-        <ul>
-          <li><a href="https://github.com/jdmagic21/useful-JavaScript-library/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/jdmagic21/useful-JavaScript-library/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/jdmagic21/useful-JavaScript-library">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <ol>
-<li>A Href String Generator
-<strong>Execution</strong>
-aString.createString(location, text) 
-*<em>Properties *</em><br>
-aString.location = location<br>
-aString.text = inside text<br>
-</li>
-<li>BreadCrumb Creator</li>
-<li>Simple HTML AJAX</li>
-<li>Radio Button Value To DOM</li>
-<li>Radio Button On Change</li>
-<li>Grab and Serialize Form Data</li>
-<li>Ajax Send w/ Modal Popup</li>
-<li>Reorder A list with links</li>
-<li>Dropdown Sub Menu Height</li>
-<li>Equal Height of child divs</li>
-<li>IE Image Replace</li>
-</ol>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/jdmagic21">jdmagic21</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+<h1>
+<a id="2-breadcrumb-creator-" class="anchor" href="#2-breadcrumb-creator-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. BreadCrumb Creator <br>
+</h1>
+
+<p>This is still a work in progress because there are several way that you can generate breadcrumbs. You can generate these based on the titles of your pages and retrieve the parents based on the navigation system. Secondly, you can generate these based on the structure of the URL. Currently this is set up were the first directory is ignored in the url (exception for a 'pages' directory) then each additional child directory is added to the breadcrumb following the page h1 or h2 title tag.<br>
+<strong>Execution</strong> <br>
+<code>breadCrumb.paramter = #container-div</code><br>
+<code>breadCrumb.printString()</code> <br></p>
+
+<h1>
+<a id="3-simple-html-ajax" class="anchor" href="#3-simple-html-ajax" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3. Simple HTML AJAX</h1>
+
+<h1>
+<a id="4-radio-button-value-to-dom" class="anchor" href="#4-radio-button-value-to-dom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>4. Radio Button Value To DOM</h1>
+
+<h1>
+<a id="5-radio-button-on-change" class="anchor" href="#5-radio-button-on-change" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>5. Radio Button On Change</h1>
+
+<h1>
+<a id="6-grab-and-serialize-form-data" class="anchor" href="#6-grab-and-serialize-form-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>6. Grab and Serialize Form Data</h1>
+
+<h1>
+<a id="7-ajax-send-w-modal-popup" class="anchor" href="#7-ajax-send-w-modal-popup" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>7. Ajax Send w/ Modal Popup</h1>
+
+<h1>
+<a id="8-reorder-a-list-with-links" class="anchor" href="#8-reorder-a-list-with-links" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>8. Reorder A list with links</h1>
+
+<h1>
+<a id="9-dropdown-sub-menu-height" class="anchor" href="#9-dropdown-sub-menu-height" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>9. Dropdown Sub-Menu Height</h1>
+
+<h1>
+<a id="10-equal-height-of-child-divs" class="anchor" href="#10-equal-height-of-child-divs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>10. Equal Height of child divs</h1>
+
+<h1>
+<a id="11-ie-image-replace" class="anchor" href="#11-ie-image-replace" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>11. IE Image Replace</h1>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/jdmagic21/useful-JavaScript-library">Useful Javascript Library</a> is maintained by <a href="https://github.com/jdmagic21">jdmagic21</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
+
+    </section>
+
+  
   </body>
 </html>
