@@ -208,17 +208,17 @@ var radioVal = {
             });
         }
     }
-    /* ========================================================= */
-    /* 5. Radio Button On Change                                 */
-    /* Gets the value of a radio button group whenever there     */
-    /* is a click inside of the main document.                   */
-    /* and replaces it with the new string.                      */
-    /*    EXECUTION:                                             */
-    /*      The function needs to be called inside               */
-    /*       of a click handler!                                 */
-    /*      radioChange.check(fieldset);                         */
-    /*       fieldset = fieldset or other DOM container          */
-    /* ========================================================= */
+/* ========================================================= */
+/* 5. Radio Button On Change                                 */
+/* Gets the value of a radio button group whenever there     */
+/* is a click inside of the main document.                   */
+/* and replaces it with the new string.                      */
+/*    EXECUTION:                                             */
+/*      The function needs to be called inside               */
+/*       of a click handler!                                 */
+/*      radioChange.check(fieldset);                         */
+/*       fieldset = fieldset or other DOM container          */
+/* ========================================================= */
 var radioChange = {
     check: function(fieldsetId)
     {
@@ -428,16 +428,16 @@ var listOrder = {
             });
         }
     }
-    /* ========================================================= */
-    /* 9. Dropdown Sub Menu Height                               */
-    /* Keeps the top height of the submenu even with the height  */
-    /* of the listed item                                        */
-    /* should not be loaded every time as this will take times   */
-    /*    EXECUTION:                                             */
-    /*        1.) Add what one li height value equals            */
-    /*        2.) Make sure to add .firstSub to first li in ul   */
-    /*        3.) Breadcrumb.begin() to start                    */
-    /* ========================================================= */
+/* ========================================================= */
+/* 9. Dropdown Sub Menu Height                               */
+/* Keeps the top height of the submenu even with the height  */
+/* of the listed item                                        */
+/* should not be loaded every time as this will take times   */
+/*    EXECUTION:                                             */
+/*        1.) Add what one li height value equals            */
+/*        2.) Make sure to add .firstSub to first li in ul   */
+/*        3.) Breadcrumb.begin() to start                    */
+/* ========================================================= */
 var dropdown = {
         liHeight: 0,
         begin: function()
@@ -484,16 +484,16 @@ var heightBalance = {
             $(heightBalance.childElements).height(this.heightArray[i]);
         }
     }
-    /* ========================================================= */
-    /* 11. IE Image Replace                                      */
-    /* IE CSS filters no longer work from version 9 and above.   */
-    /* You might have images that need to be inverted, these     */
-    /* images can be substituted. Even if you don't have a svg   */
-    /* invert issue this will still work for any other           */
-    /* image in IE                                               */
-    /*    EXECUTION:                                             */
-    /*     1.) Substitute image with image id                    */
-    /* ========================================================= */
+/* ========================================================= */
+/* 11. IE Image Replace                                      */
+/* IE CSS filters no longer work from version 9 and above.   */
+/* You might have images that need to be inverted, these     */
+/* images can be substituted. Even if you don't have a svg   */
+/* invert issue this will still work for any other           */
+/* image in IE                                               */
+/*    EXECUTION:                                             */
+/*     1.) Substitute image with image id                    */
+/* ========================================================= */
 var ieImage = {
     changeImage: function(newImage, elementId)
     {
